@@ -1,0 +1,16 @@
+c:\users\anatoly\documents\visual studio 2012\Projects\chess_visualization\chess_visualization\bin\Debug\chess_visualization.exe.config
+C:\Users\Anatoly\Documents\Visual Studio 2012\Projects\chess_visualization\chess_visualization\bin\Debug\chess_visualization.exe
+C:\Users\Anatoly\Documents\Visual Studio 2012\Projects\chess_visualization\chess_visualization\bin\Debug\chess_visualization.pdb
+C:\Users\Anatoly\Documents\Visual Studio 2012\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.csprojResolveAssemblyReference.cache
+C:\Users\Anatoly\Documents\Visual Studio 2012\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.Form1.resources
+C:\Users\Anatoly\Documents\Visual Studio 2012\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.Properties.Resources.resources
+C:\Users\Anatoly\Documents\Visual Studio 2012\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.csproj.GenerateResource.Cache
+C:\Users\Anatoly\Documents\Visual Studio 2012\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.exe
+C:\Users\Anatoly\Documents\Visual Studio 2012\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.pdb
+C:\Users\Boguslav\Documents\Visual Studio 2015\Projects\chess_visualization\chess_visualization\bin\Debug\chess_visualization.exe.config
+C:\Users\Boguslav\Documents\Visual Studio 2015\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.exe
+C:\Users\Boguslav\Documents\Visual Studio 2015\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.pdb
+C:\Users\Boguslav\Documents\Visual Studio 2015\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.csprojResolveAssemblyReference.cache
+C:\Users\Boguslav\Documents\Visual Studio 2015\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.Form1.resources
+C:\Users\Boguslav\Documents\Visual Studio 2015\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.Properties.Resources.resources
+C:\Users\Boguslav\Documents\Visual Studio 2015\Projects\chess_visualization\chess_visualization\obj\Debug\chess_visualization.csproj.GenerateResource.Cache
