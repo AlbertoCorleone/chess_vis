@@ -13,16 +13,16 @@ namespace chess_visualization
 {
     public partial class Form1 : Form
     {
-        public class Фигура
+        public class Figure
         {
-            public string тип;
+            public string type;
             public int x;
             public int y;
 
-            public Фигура() { }
-            public Фигура(string _тип, int _x, int _y)
+            public Figure() { }
+            public Figure(string _type, int _x, int _y)
             {
-                тип = _тип;
+                type = _type;
                 x = _x;
                 y = _y;
             }
@@ -33,76 +33,76 @@ namespace chess_visualization
             InitializeComponent();
         }
         #region глобальные переменные
-        static int ход = 0;
-        static bool ходБелых = true;
-        static bool ходЧерных = true;
-        static Image доска;
-        static Image белаяПешка;
-        static Image белаяТура;
-        static Image белыйКонь;
-        static Image белыйСлон;
-        static Image белыйКороль;
-        static Image белыйФерзь;
-        static Image чернаяПешка;
-        static Image чернаяТура;
-        static Image черныйКонь;
-        static Image черныйСлон;
-        static Image черныйКороль;
-        static Image черныйФерзь;
-        static List<Фигура> БелыеФигуры;
-        static List<Фигура> ЧерныеФигуры;
-        static string[] СписокХодов;
+        static int step = 0;
+        static bool stepWhite = true;
+        static bool stepBlack = true;
+        static Image dock;
+        static Image whitePawn;
+        static Image whiteTour;
+        static Image whiteHourse;
+        static Image whiteBishop;
+        static Image whiteQueen;
+        static Image whiteKing;
+        static Image blackPawn;
+        static Image blackTour;
+        static Image blackHourse;
+        static Image blackBishop;
+        static Image blackKing;
+        static Image blackQueen;
+        static List<Figure> WhiteFigures;
+        static List<Figure> BlackFigures;
+        static string[] ListSteps;
         #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
-            доска = new Bitmap("images/доска.png");
+            dock = new Bitmap("images/доска.png");
             //СписокХодов = new string[]
-            белаяПешка = new Bitmap("images/пешка1.png");
-            белаяТура = new Bitmap("images/тура1.png");
-            белыйКонь = new Bitmap("images/конь1.png");
-            белыйСлон = new Bitmap("images/слон1.png");
-            белыйФерзь = new Bitmap("images/ферзь1.png");
-            белыйКороль = new Bitmap("images/король1.png");
-            чернаяПешка = new Bitmap("images/пешка.png");
-            чернаяТура = new Bitmap("images/тура.png");
-            черныйКонь = new Bitmap("images/конь.png");
-            черныйСлон = new Bitmap("images/слон.png");
-            черныйФерзь = new Bitmap("images/ферзь.png");
-            черныйКороль = new Bitmap("images/король.png");
-            БелыеФигуры = new List<Фигура>();
-            БелыеФигуры.Add(new Фигура("пешка", 1, 2));
-            БелыеФигуры.Add(new Фигура("пешка", 2, 2));
-            БелыеФигуры.Add(new Фигура("пешка", 3, 2));
-            БелыеФигуры.Add(new Фигура("пешка", 4, 2));
-            БелыеФигуры.Add(new Фигура("пешка", 5, 2));
-            БелыеФигуры.Add(new Фигура("пешка", 6, 2));
-            БелыеФигуры.Add(new Фигура("пешка", 7, 2));
-            БелыеФигуры.Add(new Фигура("пешка", 8, 2));
-            БелыеФигуры.Add(new Фигура("тура", 1, 1));
-            БелыеФигуры.Add(new Фигура("конь", 2, 1));
-            БелыеФигуры.Add(new Фигура("слон", 3, 1));
-            БелыеФигуры.Add(new Фигура("король", 5, 1));
-            БелыеФигуры.Add(new Фигура("ферзь", 4, 1));
-            БелыеФигуры.Add(new Фигура("тура", 8, 1));
-            БелыеФигуры.Add(new Фигура("конь", 7, 1));
-            БелыеФигуры.Add(new Фигура("слон", 6, 1));
-            ЧерныеФигуры = new List<Фигура>();
-            ЧерныеФигуры.Add(new Фигура("пешка", 1, 7));
-            ЧерныеФигуры.Add(new Фигура("пешка", 2, 7));
-            ЧерныеФигуры.Add(new Фигура("пешка", 3, 7));
-            ЧерныеФигуры.Add(new Фигура("пешка", 4, 7));
-            ЧерныеФигуры.Add(new Фигура("пешка", 5, 7));
-            ЧерныеФигуры.Add(new Фигура("пешка", 6, 7));
-            ЧерныеФигуры.Add(new Фигура("пешка", 7, 7));
-            ЧерныеФигуры.Add(new Фигура("пешка", 8, 7));
-            ЧерныеФигуры.Add(new Фигура("тура", 1, 8));
-            ЧерныеФигуры.Add(new Фигура("конь", 2, 8));
-            ЧерныеФигуры.Add(new Фигура("слон", 3, 8));
-            ЧерныеФигуры.Add(new Фигура("король", 5, 8));
-            ЧерныеФигуры.Add(new Фигура("ферзь", 4, 8));
-            ЧерныеФигуры.Add(new Фигура("тура", 8, 8));
-            ЧерныеФигуры.Add(new Фигура("конь", 7, 8));
-            ЧерныеФигуры.Add(new Фигура("слон", 6, 8));
+            whitePawn = new Bitmap("images/пешка1.png");
+            whiteTour = new Bitmap("images/тура1.png");
+            whiteHourse = new Bitmap("images/конь1.png");
+            whiteBishop = new Bitmap("images/слон1.png");
+            whiteQueen = new Bitmap("images/ферзь1.png");
+            whiteKing = new Bitmap("images/король1.png");
+            blackPawn = new Bitmap("images/пешка.png");
+            blackTour = new Bitmap("images/тура.png");
+            blackHourse = new Bitmap("images/конь.png");
+            blackBishop = new Bitmap("images/слон.png");
+            blackQueen = new Bitmap("images/ферзь.png");
+            blackKing = new Bitmap("images/король.png");
+            WhiteFigures = new List<Figure>();
+            WhiteFigures.Add(new Figure("пешка", 1, 2));
+            WhiteFigures.Add(new Figure("пешка", 2, 2));
+            WhiteFigures.Add(new Figure("пешка", 3, 2));
+            WhiteFigures.Add(new Figure("пешка", 4, 2));
+            WhiteFigures.Add(new Figure("пешка", 5, 2));
+            WhiteFigures.Add(new Figure("пешка", 6, 2));
+            WhiteFigures.Add(new Figure("пешка", 7, 2));
+            WhiteFigures.Add(new Figure("пешка", 8, 2));
+            WhiteFigures.Add(new Figure("тура", 1, 1));
+            WhiteFigures.Add(new Figure("конь", 2, 1));
+            WhiteFigures.Add(new Figure("слон", 3, 1));
+            WhiteFigures.Add(new Figure("король", 5, 1));
+            WhiteFigures.Add(new Figure("ферзь", 4, 1));
+            WhiteFigures.Add(new Figure("тура", 8, 1));
+            WhiteFigures.Add(new Figure("конь", 7, 1));
+            WhiteFigures.Add(new Figure("слон", 6, 1));
+            blackFigures = new List<Figure>();
+            blackFigures.Add(new Figure("пешка", 1, 7));
+            blackFigures.Add(new Figure("пешка", 2, 7));
+            blackFigures.Add(new Figure("пешка", 3, 7));
+            blackFigures.Add(new Figure("пешка", 4, 7));
+            blackFigures.Add(new Figure("пешка", 5, 7));
+            blackFigures.Add(new Figure("пешка", 6, 7));
+            blackFigures.Add(new Figure("пешка", 7, 7));
+            blackFigures.Add(new Figure("пешка", 8, 7));
+            blackFigures.Add(new Figure("тура", 1, 8));
+            blackFigures.Add(new Figure("конь", 2, 8));
+            blackFigures.Add(new Figure("слон", 3, 8));
+            blackFigures.Add(new Figure("король", 5, 8));
+            blackFigures.Add(new Figure("ферзь", 4, 8));
+            blackFigures.Add(new Figure("тура", 8, 8));
+            blackFigures.Add(new Figure("конь", 7, 8));
+            blackFigures.Add(new Figure("слон", 6, 8));
         }
 
         int toScreenX(int x)
@@ -141,40 +141,40 @@ namespace chess_visualization
             if (c == 'h') { return 8; }
             return 0;
         }
-        bool свободно(int x1, int y1, int x2, int y2)
+        bool free(int x1, int y1, int x2, int y2)
         {
             #region для туры
             if (x1 == x2)  // Ra5 -> a1
             {
-                foreach (Фигура ф in БелыеФигуры)
+                foreach (Figure f in WhiteFigures)
                 {
                     if (y1 < y2)
                     {
-                        if (ф.x == x1 && ф.y > y1 && ф.y < y2)
+                        if (f.x == x1 && f.y > y1 && f.y < y2)
                         {
                             return false;
                         }
                     }
                     else
                     {
-                        if (ф.x == x1 && ф.y < y1 && ф.y > y2)
+                        if (f.x == x1 && f.y < y1 && f.y > y2)
                         {
                             return false;
                         }
                     }
                 }
-                foreach (Фигура ф in ЧерныеФигуры)
+                foreach (Figure f in BlackFigures)
                 {
                     if (y1 < y2)
                     {
-                        if (ф.x == x1 && ф.y > y1 && ф.y < y2)
+                        if (f.x == x1 && f.y > y1 && f.y < y2)
                         {
                             return false;
                         }
                     }
                     else
                     {
-                        if (ф.x == x1 && ф.y < y1 && ф.y > y2)
+                        if (f.x == x1 && f.y < y1 && f.y > y2)
                         {
                             return false;
                         }
@@ -186,35 +186,35 @@ namespace chess_visualization
             }
             if (y1 == y2) //c1 e1
             {
-                foreach (Фигура ф in БелыеФигуры)
+                foreach (Figure f in WhiteFigures)
                 {
                     if (x1 < x2)
                     {
-                        if (ф.y == y1 && ф.x > x1 && ф.x < y2)
+                        if (f.y == y1 && f.x > x1 && f.x < y2)
                         {
                             return false;
                         }
                     }
                     else
                     {
-                        if (ф.y == y1 && ф.x < x1 && ф.x > y2)
+                        if (f.y == y1 && f.x < x1 && f.x > y2)
                         {
                             return false;
                         }
                     }
                 }
-                foreach (Фигура ф in ЧерныеФигуры)
+                foreach (Figure f in BlackFigures)
                 {
                     if (x1 < x2)
                     {
-                        if (ф.y == y1 && ф.x > x1 && ф.x < y2)
+                        if (f.y == y1 && f.x > x1 && f.x < y2)
                         {
                             return false;
                         }
                     }
                     else
                     {
-                        if (ф.y == y1 && ф.x < x1 && ф.x > y2)
+                        if (f.y == y1 && f.x < x1 && f.x > y2)
                         {
                             return false;
                         }
@@ -226,7 +226,7 @@ namespace chess_visualization
             #region для слона
             if (x1 != x2 && y1 != y2) // Bf1 -> c4 (e2, d3)
             {
-                List<Point> ТочкиМеждуКлетками = new List<Point>();
+                List<Point> PointsBetweenCells = new List<Point>();
                 int x = x1;
                 int y = y1;
                 while (x != x2)
@@ -235,12 +235,12 @@ namespace chess_visualization
                     else { x--; }
                     if (y2 > y1) { y++; }
                     else { y--; }
-                    ТочкиМеждуКлетками.Add(new Point(x, y));
+                    PointsBetweenCells.Add(new Point(x, y));
                 }
 
-                foreach (Фигура ф in БелыеФигуры)
+                foreach (Figure f in WhiteFigures)
                 {
-                    if (ТочкиМеждуКлетками.Contains(new Point(ф.x, ф.y)))
+                    if (PointsBetweenCells.Contains(new Point(f.x, f.y)))
                     {
                         return false;
                     }
@@ -254,62 +254,62 @@ namespace chess_visualization
         {
             Graphics g = e.Graphics;
             #region рисуем доску
-            g.DrawImage(доска, 250, 30, 400, 400);
+            g.DrawImage(dock, 250, 30, 400, 400);
             #endregion
             #region рисуем фигуры
-            foreach (Фигура ф in БелыеФигуры)
+            foreach (Figure f in WhiteFigures)
             {
-                if (ф.тип == "пешка")
+                if (f.type == "пешка")
                 {
-                    g.DrawImage(белаяПешка, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(whitePawn, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "тура")
+                if (f.type == "тура")
                 {
-                    g.DrawImage(белаяТура, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(whiteTour, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "конь")
+                if (f.type == "конь")
                 {
-                    g.DrawImage(белыйКонь, toScreenX(ф.x), toScreenY(ф.y)-3);
+                    g.DrawImage(whiteHorse, toScreenX(f.x), toScreenY(f.y)-3);
                 }
-                if (ф.тип == "слон")
+                if (f.type == "слон")
                 {
-                    g.DrawImage(белыйСлон, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(whiteBishop, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "король")
+                if (f.type == "король")
                 {
-                    g.DrawImage(белыйКороль, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(wgiteQueen, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "ферзь")
+                if (f.type == "ферзь")
                 {
-                    g.DrawImage(белыйФерзь, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(whiteKing, toScreenX(f.x), toScreenY(f.y));
                 }
                 
             }
-            foreach (Фигура ф in ЧерныеФигуры)
+            foreach (Figure f in BlackFigures)
             {
-                if (ф.тип == "пешка")
+                if (f.type == "пешка")
                 {
-                    g.DrawImage(чернаяПешка, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(blacPawn, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "тура")
+                if (f.type == "тура")
                 {
-                    g.DrawImage(чернаяТура, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(blackTour, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "слон")
+                if (f.type == "слон")
                 {
-                    g.DrawImage(черныйСлон, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(blackBishop, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "конь")
+                if (f.type == "конь")
                 {
-                    g.DrawImage(черныйКонь, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(blackHorse, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "король")
+                if (f.type == "король")
                 {
-                    g.DrawImage(черныйКороль, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(blackQueen, toScreenX(f.x), toScreenY(f.y));
                 }
-                if (ф.тип == "ферзь")
+                if (f.type == "ферзь")
                 {
-                    g.DrawImage(черныйФерзь, toScreenX(ф.x), toScreenY(ф.y));
+                    g.DrawImage(blackKing, toScreenX(f.x), toScreenY(f.y));
                 }
             }
             #endregion
@@ -324,9 +324,9 @@ namespace chess_visualization
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string filename = openFileDialog1.FileName;
-                СписокХодов = File.ReadAllLines(filename);
+                ListSteps = File.ReadAllLines(filename);
             }
-            foreach (string p in СписокХодов)
+            foreach (string p in ListSteps)
             {
                 richTextBox1.Text += p + "\n";
             }
@@ -336,12 +336,12 @@ namespace chess_visualization
         private void pictureBox3_Click(object sender, EventArgs e) // ход вперед
         {
             
-            if (ходБелых)
+            if (stepWhite)
             {
-                ход++;
+                step++;
                 // извлекаем из строки ход
                 //1.e4 e5 -> e4
-                string move = СписокХодов[ход - 1].Substring(СписокХодов[ход - 1].IndexOf('.') + 1, СписокХодов[ход - 1].IndexOf(' ') - СписокХодов[ход - 1].IndexOf('.') - 1);
+                string move = StepsList[step - 1].Substring(StepsList[step - 1].IndexOf('.') + 1, StepsList[step - 1].IndexOf(' ') - StepsList[step - 1].IndexOf('.') - 1);
                 // рашрифровуем ход и ходим (меняем в массиве фигур положение)
                 // N = knight
                 // B = bishop
@@ -349,43 +349,43 @@ namespace chess_visualization
                 // Q = queen
                 // K = king
                 // _ = pawn
-                label1.Text = СписокХодов[ход - 1];
+                label1.Text = StepsList[step - 1];
                 
-                bool взятиеФигуры = false;
+                bool takeFigure = false;
                 if (move[1] == 'x')
                 {
-                    взятиеФигуры = true;
+                    takeFigure = true;
                     move = move.Remove(1, 1);
                 }
 
                 if (move[0] == 'N') // Nf3 --- Nef3 N1g5 ---
                 {
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
                         if (
-                               ф.тип == "конь"
+                               f.type == "конь"
                                &&
                                (
-                                    (Math.Abs(ф.x - toDigit(move[1])) == 1 && Math.Abs(ф.y - (move[2] - 48)) == 2)
+                                    (Math.Abs(f.x - toDigit(move[1])) == 1 && Math.Abs(f.y - (move[2] - 48)) == 2)
                                     ||
-                                    (Math.Abs(ф.x - toDigit(move[1])) == 2 && Math.Abs(ф.y - (move[2] - 48)) == 1)
+                                    (Math.Abs(f.x - toDigit(move[1])) == 2 && Math.Abs(f.y - (move[2] - 48)) == 1)
                                )
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in ЧерныеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in BlackFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                ЧерныеФигуры.Remove(фигураНаУдаление);
+                                BlackFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -394,33 +394,33 @@ namespace chess_visualization
                 }
                 if (move[0] == 'R') // Rf3 --- Ref3 R1g5 ---
                 {
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
                         if (
-                               ф.тип == "тура"
+                               f.type == "тура"
                                &&
                                (
-                                    (ф.x == toDigit(move[1])  && свободно(ф.x, ф.y, toDigit(move[1]), move[2] - 48))
+                                    (f.x == toDigit(move[1])  && free(f.x, f.y, toDigit(move[1]), move[2] - 48))
                                     ||
-                                    (ф.y == move[2]  && свободно(ф.x, ф.y, toDigit(move[1]), move[2] - 48))
+                                    (f.y == move[2]  && free(f.x, f.y, toDigit(move[1]), move[2] - 48))
 
                                )
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in ЧерныеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in BlackFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                ЧерныеФигуры.Remove(фигураНаУдаление);
+                                BlackFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -429,31 +429,31 @@ namespace chess_visualization
                 }
                 if (move[0] == 'B') // Bf3 --- Bef4 B1g5 ---
                 {
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
                         if (
-                               ф.тип == "слон"
+                               f.type == "слон"
                                &&
                                (
-                                    (Math.Abs(ф.x - toDigit(move[1])) == Math.Abs(ф.y - (move[2] - 48))) && свободно(ф.x, ф.y, toDigit(move[1]), move[2] - 48)
+                                    (Math.Abs(f.x - toDigit(move[1])) == Math.Abs(f.y - (move[2] - 48))) && free(f.x, f.y, toDigit(move[1]), move[2] - 48)
 
                                )
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in ЧерныеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in BlackFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                ЧерныеФигуры.Remove(фигураНаУдаление);
+                                BlackFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -462,26 +462,26 @@ namespace chess_visualization
                 }
                 if (move[0] == 'Q') // Qf3 
                 {
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
                         if (
-                               ф.тип == "ферзь"
+                               f.type == "ферзь"
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in ЧерныеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in BlackFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                ЧерныеФигуры.Remove(фигураНаУдаление);
+                                BlackFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -490,26 +490,26 @@ namespace chess_visualization
                 }
                 if (move[0] == 'K') // Kf3 
                 {
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
                         if (
-                               ф.тип == "король"
+                               f.type == "король"
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in ЧерныеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in BlackFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                ЧерныеФигуры.Remove(фигураНаУдаление);
+                                BlackFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -520,62 +520,62 @@ namespace chess_visualization
                 if (move[0] == 'a' || move[0] == 'b' || move[0] == 'c' || move[0] == 'd' || move[0] == 'e' || move[0] == 'f' || move[0] == 'g' || move[0] == 'h') //e2 -> e4
                 {
 
-                    if (взятиеФигуры == false) // e4
+                    if (takeFigure == false) // e4
                     {
                         bool s = false;
-                        foreach (Фигура ф in БелыеФигуры)
+                        foreach (Figure f in WhiteFigures)
                         {
                             if (
-                                    ф.тип == "пешка"
-                                    && ф.x == toDigit(move[0])
-                                    && ф.y == (move[1] - 48) - 1
+                                    f.type == "пешка"
+                                    && f.x == toDigit(move[0])
+                                    && f.y == (move[1] - 48) - 1
                                )
                             {
-                                ф.x = toDigit(move[0]);
-                                ф.y = move[1] - 48;
+                                f.x = toDigit(move[0]);
+                                f.y = move[1] - 48;
                                 s = true;
                                 break;
                             }
                         }
                         if (s == false)
                         {
-                            foreach (Фигура ф in БелыеФигуры)
+                            foreach (Figure f in WhiteFigures)
                             {
                                 if (
-                                        ф.тип == "пешка"
-                                        && ф.x == toDigit(move[0])
-                                        && ф.y == (move[1] - 48) - 2
+                                        f.type == "пешка"
+                                        && f.x == toDigit(move[0])
+                                        && f.y == (move[1] - 48) - 2
                                    )
                                 {
-                                    ф.x = toDigit(move[0]);
-                                    ф.y = move[1] - 48;
+                                    f.x = toDigit(move[0]);
+                                    f.y = move[1] - 48;
                                     break;
                                 }
                             }
                         }
                     }
-                    if (взятиеФигуры == true) // de4
+                    if (takeFigure == true) // de4
                     {
-                        foreach (Фигура ф in БелыеФигуры)
+                        foreach (Figure f in WhiteFigures)
                         {
                             if (
-                                    ф.тип == "пешка" 
-                                    &&  ф.x == toDigit(move[0]) 
-                                    && ф.y == (move[2] - 48) - 1
+                                    f.type == "пешка" 
+                                    &&  f.x == toDigit(move[0]) 
+                                    && f.y == (move[2] - 48) - 1
                                 )
                             {
-                                ф.x = toDigit(move[1]);
-                                ф.y = move[2] - 48;
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in ЧерныеФигуры)
+                                f.x = toDigit(move[1]);
+                                f.y = move[2] - 48;
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in BlackFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                ЧерныеФигуры.Remove(фигураНаУдаление);
+                                BlackFigures.Remove(figureForRemove);
                                 break;
                             }
                         }
@@ -583,42 +583,42 @@ namespace chess_visualization
                 }
                 if (move == "O-O")
                 {
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
-                        if (ф.тип == "король")
+                        if (f.type == "король")
                         {
-                            ф.x = 7;
-                            ф.y = 1;
+                            f.x = 7;
+                            f.y = 1;
                             break;
                         }
                     }
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
-                        if (ф.тип == "тура" && ф.x == 8)
+                        if (f.type == "тура" && f.type == 8)
                         {
-                            ф.x = 6;
-                            ф.y = 1;
+                            f.x = 6;
+                            f.y = 1;
                         }
                     }
                     
                 }
                 if (move == "O-O-O")
                 {
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
-                        if (ф.тип == "король")
+                        if (f.type == "король")
                         {
-                            ф.x = 3;
-                            ф.y = 1;
+                            f.x = 3;
+                            f.y = 1;
                             break;
                         }
                     }
-                    foreach (Фигура ф in БелыеФигуры)
+                    foreach (Figure f in WhiteFigures)
                     {
-                        if (ф.тип == "тура" && ф.x == 1)
+                        if (f.type == "тура" && f.x == 1)
                         {
-                            ф.x = 4;
-                            ф.y = 1;
+                            f.x = 4;
+                            f.y = 1;
                         }
                     }
 
@@ -628,7 +628,7 @@ namespace chess_visualization
                 Invalidate();
 
                 // передаем ход противоположной стороне
-                ходБелых = false;
+                stepWhite = false;
             }
         
         else  
@@ -636,7 +636,7 @@ namespace chess_visualization
                
                 // извлекаем из строки ход
                 //1.e4 e5 -> e4
-                string move = СписокХодов[ход - 1].Substring(СписокХодов[ход - 1].IndexOf(' ') + 1);
+                string move = ListSteps[step - 1].Substring(ListSteps[step - 1].IndexOf(' ') + 1);
                 // рашрифровуем ход и ходим (меняем в массиве фигур положение)
                 // N = knight
                 // B = bishop
@@ -644,41 +644,41 @@ namespace chess_visualization
                 // Q = queen
                 // K = king
                 // _ = pawn
-                label1.Text = СписокХодов[ход - 1];
-                bool взятиеФигуры = false;
+                label1.Text = ListSteps[step - 1];
+                bool takeFigure = false;
                 if (move[1] == 'x')
                 {
-                    взятиеФигуры = true;
+                    takeFigure = true;
                     move = move.Remove(1, 1);
                 }
                 if (move[0] == 'N') // Nf3 --- Nef3 N1g5 ---
                 {
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
                         if (
-                               ф.тип == "конь"
+                               f.type == "конь"
                                &&
                                (
-                                    (Math.Abs(ф.x - toDigit(move[1])) == 1 && Math.Abs(ф.y - (move[2] - 48)) == 2)
+                                    (Math.Abs(f.x - toDigit(move[1])) == 1 && Math.Abs(f.y - (move[2] - 48)) == 2)
                                     ||
-                                    (Math.Abs(ф.x - toDigit(move[1])) == 2 && Math.Abs(ф.y - (move[2] - 48)) == 1)
+                                    (Math.Abs(f.x - toDigit(move[1])) == 2 && Math.Abs(f.y - (move[2] - 48)) == 1)
                                )
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in БелыеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in WhiteFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                БелыеФигуры.Remove(фигураНаУдаление);
+                                WhiteFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -687,33 +687,33 @@ namespace chess_visualization
                 }
                 if (move[0] == 'R') // Rf3 --- Ref3 R1g5 ---
                 {
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
                         if (
-                               ф.тип == "тура"
+                               f.type == "тура"
                                &&
                                (
-                                    (ф.x == toDigit(move[1])  && свободно(ф.x, ф.y, toDigit(move[1]), move[2] - 48))
+                                    (f.x == toDigit(move[1])  && free(f.x, f.y, toDigit(move[1]), move[2] - 48))
                                     ||
-                                    (ф.y == move[2]  && свободно(ф.x, ф.y, toDigit(move[1]), move[2] - 48))
+                                    (f.y == move[2]  && free(f.x, f.y, toDigit(move[1]), move[2] - 48))
 
                                )
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in БелыеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in WhiteFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                БелыеФигуры.Remove(фигураНаУдаление);
+                                WhiteFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -722,31 +722,31 @@ namespace chess_visualization
                 }
                 if (move[0] == 'B') // Bf3 --- Bef4 B1g5 ---
                 {
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
                         if (
-                               ф.тип == "слон"
+                               f.type == "слон"
                                &&
                                (
-                                    (Math.Abs(ф.x - toDigit(move[1])) == Math.Abs(ф.y - (move[2] - 48))) && свободно(ф.x, ф.y, toDigit(move[1]), move[2] - 48)
+                                    (Math.Abs(f.x - toDigit(move[1])) == Math.Abs(f.y - (move[2] - 48))) && free(f.x, f.y, toDigit(move[1]), move[2] - 48)
 
                                )
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in БелыеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in WhiteFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                БелыеФигуры.Remove(фигураНаУдаление);
+                                WhiteFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -755,26 +755,26 @@ namespace chess_visualization
                 }
                 if (move[0] == 'Q') // Qf3 
                 {
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
                         if (
-                               ф.тип == "ферзь"
+                               f.type == "ферзь"
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in БелыеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure ф1 in WhiteFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                БелыеФигуры.Remove(фигураНаУдаление);
+                                WhiteFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -783,26 +783,26 @@ namespace chess_visualization
                 }
                 if (move[0] == 'K') // Kf3 
                 {
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
                         if (
-                               ф.тип == "король"
+                               f.type == "король"
                            )
                         {
-                            ф.x = toDigit(move[1]);
-                            ф.y = move[2] - 48;
-                            if (взятиеФигуры == true)
+                            f.x = toDigit(move[1]);
+                            f.y = move[2] - 48;
+                            if (takeFigure == true)
                             {
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in БелыеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in WhiteFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                БелыеФигуры.Remove(фигураНаУдаление);
+                                WhiteFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -813,35 +813,35 @@ namespace chess_visualization
                 //to do 2 пешки на 1-й вертикале 
                 if (move[0] == 'a' || move[0] == 'b' || move[0] == 'c' || move[0] == 'd' || move[0] == 'e' || move[0] == 'f' || move[0] == 'g' || move[0] == 'h') //e2 -> e4
                 {
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
                         if (
-                                ф.тип == "пешка" 
-                                &&  ф.x == toDigit(move[0])
+                                f.type == "пешка" 
+                                &&  f.x == toDigit(move[0])
                            )
                         {
                             
-                            ф.x = toDigit(move[0]);
-                            ф.y = move[1] - 48;
-                            if (взятиеФигуры == false) // e4
+                            f.x = toDigit(move[0]);
+                            f.y = move[1] - 48;
+                            if (takeFigure == false) // e4
                             {
-                                ф.x = toDigit(move[0]);
-                                ф.y = move[1] - 48;
+                                f.x = toDigit(move[0]);
+                                f.y = move[1] - 48;
                             }
-                            if (взятиеФигуры == true) // de4
+                            if (takeFigure == true) // de4
                             {
                                 ф.x = toDigit(move[1]);
                                 ф.y = move[2] - 48;
-                                Фигура фигураНаУдаление = new Фигура();
-                                foreach (Фигура ф1 in БелыеФигуры)
+                                Figure figureForRemove = new Figure();
+                                foreach (Figure f1 in WhiteFigures)
                                 {
-                                    if (ф1.x == ф.x && ф1.y == ф.y)
+                                    if (f1.x == f.x && f1.y == f.y)
                                     {
-                                        фигураНаУдаление = ф1;
+                                        figureForRemove = f1;
                                         break;
                                     }
                                 }
-                                БелыеФигуры.Remove(фигураНаУдаление);
+                                WhiteFigures.Remove(figureForRemove);
                             }
                             break;
                         }
@@ -850,42 +850,42 @@ namespace chess_visualization
                 }
                 if (move.Length >= 5 && move.Substring(0, 5) == "O-O-O")
                 {
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
-                        if (ф.тип == "король")
+                        if (f.type == "король")
                         {
-                            ф.x = 3;
-                            ф.y = 8;
+                            f.x = 3;
+                            f.y = 8;
                             break;
                         }
                     }
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
-                        if (ф.тип == "тура" && ф.x == 1)
+                        if (f.type == "тура" && f.x == 1)
                         {
-                            ф.x = 4;
-                            ф.y = 8;
+                            f.x = 4;
+                            f.y = 8;
                         }
                     }
 
                 }
                 else if (move.Length >= 3 && move.Substring(0, 3) == "O-O")
                 {
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
-                        if (ф.тип == "король")
+                        if (f.type == "король")
                         {
-                            ф.x = 7;
-                            ф.y = 8;
+                            f.x = 7;
+                            f.y = 8;
                             break;
                         }
                     }
-                    foreach (Фигура ф in ЧерныеФигуры)
+                    foreach (Figure f in BlackFigures)
                     {
-                        if (ф.тип == "тура" && ф.x == 8)
+                        if (f.type == "тура" && f.x == 8)
                         {
-                            ф.x = 6;
-                            ф.y = 8;
+                            f.x = 6;
+                            f.y = 8;
                         }
                     }
 
@@ -895,7 +895,7 @@ namespace chess_visualization
                 // вызываем перерисовку
                 Invalidate();
                 // передаем ход противоположной стороне
-                ходБелых = true;
+                stepWhite = true;
             }
         }
     }
